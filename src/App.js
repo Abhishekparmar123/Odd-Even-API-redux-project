@@ -19,15 +19,21 @@ function App() {
       headers: { 'Content-Type': 'application/json' },
     };
     try{
-    const response = await fetch('https://hirebus-backend.herokuapp.com/getData', requestOptions);
-    if(!response.ok){
-      throw new Error("something went wrong");
-    }
+      const response = await fetch('https://hirebus-backend.herokuapp.com/getData', requestOptions);
+      if(!response.ok){
+        throw new Error("something went wrong");
+      }
 
-    const data = await response.json();
-    setData(data.data);
-    setNumber(data.number)
-    console.log(data);
+      const data = await response.json();
+      setData(data.data);
+      setNumber(data.number)
+      console.log(data);
+      if(data.number%2===0){
+        alert("even number : " + data.number)
+      }
+      else{
+        alert("odd number : " + data.number)
+      }
     }
     catch(error){
       console.log(error);
